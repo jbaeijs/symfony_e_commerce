@@ -1,3 +1,16 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+# config/routes.yaml
+home_page:
+  path:  /
+  controller: App\Controller\DefaultController::index
+
+contact:
+  path:  /contact
+  controller: App\Controller\DefaultController::contact
+
+boutique:
+  path:  /boutique
+  controller: App\Controller\BoutiqueController::index
+
+rayon:
+  path: /rayon/{idCategorie}
+  controller: App\Controller\BoutiqueController::index

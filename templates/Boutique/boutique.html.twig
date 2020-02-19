@@ -1,0 +1,26 @@
+{# templates/Default/contact.html.twig #}
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>Boutique</h1>
+    {% if categories is defined %}
+        <div class="container">
+            <div class="row">
+                {% for categorie in categories %}
+                    <div class="col-sm">
+                        {% if categorie.id == 1 %}
+                            <img src="{{ asset('img/fruits.jpg') }}"/>
+                        {% endif %}
+                        {% if categorie.id == 2 %}
+                            <img src="{{ asset('img/legumes.jpg') }}"/>
+                        {% endif %}
+                        {% if categorie.id == 3 %}
+                            <img src="{{ asset('img/junk_food.jpg') }}"/>
+                        {% endif %}
+                        <a href="#"><h1>{{ categorie.libelle }}<h1></a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
