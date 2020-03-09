@@ -9,4 +9,9 @@ class BoutiqueController extends AbstractController {
         $categories = $boutique->findAllCategories();
         return $this->render('Boutique/boutique.html.twig', ["categories" => $categories]);
     }
+
+    public function rayon(BoutiqueService $boutique, $idCategorie){
+        $produits = $boutique->findProduitsByCategorie($idCategorie);
+        return $this->render('Boutique/rayon.html.twig', ["produits" => $produits]);
+    }
 }

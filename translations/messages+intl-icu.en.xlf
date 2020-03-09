@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="lAHRnoY" resname="Boutique.boutique.titre">
+        <source>Boutique.boutique.titre</source>
+        <target>Store</target>
+      </trans-unit>
+      <trans-unit id="CxWVehD" resname="Boutique.rayon.titre">
+        <source>Boutique.rayon.titre</source>
+        <target>Shop departement</target>
+      </trans-unit>
+      <trans-unit id="crr6AHI" resname="default.contact.title">
+        <source>default.contact.title</source>
+        <target>Contact us!</target>
+      </trans-unit>
+      <trans-unit id="P09wNc1" resname="default.contact.nom">
+        <source>default.contact.nom</source>
+        <target>First name</target>
+      </trans-unit>
+      <trans-unit id="01XeCEt" resname="default.contact.prenom">
+        <source>default.contact.prenom</source>
+        <target>Last name</target>
+      </trans-unit>
+      <trans-unit id="_ogaJDP" resname="default.index.bienvenue">
+        <source>default.index.bienvenue</source>
+        <target>Welcome!</target>
+      </trans-unit>
+      <trans-unit id="P5lEkmj" resname="navbar.accueil">
+        <source>navbar.accueil</source>
+        <target>Home</target>
+      </trans-unit>
+      <trans-unit id="rIsAC1h" resname="navbar.boutique">
+        <source>navbar.boutique</source>
+        <target>Store</target>
+      </trans-unit>
+      <trans-unit id="iVNeBrZ" resname="navbar.contact">
+        <source>navbar.contact</source>
+        <target>Contact</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

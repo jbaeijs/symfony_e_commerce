@@ -1,16 +1,32 @@
 # config/routes.yaml
 home_page:
-  path:  /
+  path:  /{_locale}
   controller: App\Controller\DefaultController::index
+  requirements:
+    _locale: '%app.supported_locales%'
+  defaults:
+    _locale: fr
 
 contact:
-  path:  /contact
+  path:  /{_locale}/contact
   controller: App\Controller\DefaultController::contact
+  requirements:
+    _locale: '%app.supported_locales%'
+  defaults:
+    _locale: fr
 
 boutique:
-  path:  /boutique
+  path:  /{_locale}/boutique
   controller: App\Controller\BoutiqueController::index
+  requirements:
+    _locale: '%app.supported_locales%'
+  defaults:
+    _locale: fr
 
 rayon:
-  path: /rayon/{idCategorie}
-  controller: App\Controller\BoutiqueController::index
+  path: /{_locale}/rayon/{idCategorie}
+  controller: App\Controller\BoutiqueController::rayon
+  requirements:
+    _locale: '%app.supported_locales%'
+  defaults:
+    _locale: fr

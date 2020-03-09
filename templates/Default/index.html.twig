@@ -2,8 +2,8 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <h1>Bienvenue !</h1>
+    <h1>{% trans %}default.index.bienvenue{% endtrans %}</h1>
     <div>
-        <img src="{{ asset('img/epicerie.jpg') }}" />   
+        <img src="{{ asset('images/epicerie.jpg') }}" width="90%"/>   
     </div>
 {% endblock %}
