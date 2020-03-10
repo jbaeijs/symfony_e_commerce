@@ -1,0 +1,54 @@
+{# templates/Default/contact.html.twig #}
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>Panier</h1>
+    {% if panier is defined %}
+        <div class="container">
+            <div class="row">
+                <br>
+                {% if panier|length == 0 %}
+                    <h2>Votre panier est vide...</h2>
+                {% else %}
+                    <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Libelle</th>
+                            <th scope="col">Quantité</th>
+                            <th scope="col">Prix unitaire</th>
+                            <th scope="col">Prix total</th>
+                            <th><th>
+                        </tr>
+                    </thead>
+                    {% for article in panier %}
+                         <tr>
+                            <th><img width="75px" src="{{ asset(article.produit.visuel) }}"/></th>
+                            <td>{{ article.produit.libelle }}</td>
+                            <td>
+                                <a href="{{ path('panier_enlever', {'idProduit': article.produit.id, 'quantite': article.quantite - 1}) }}" type="button" class="btn btn-light" style="margin-right: 10px;">-</a>
+                                {{ article.quantite }}
+                                <a href="{{ path('panier_ajouter', {'idProduit': article.produit.id, 'quantite': article.quantite + 1}) }}" type="button" class="btn btn-light" style="margin-left: 10px;">+</a>
+                            </td>
+                            <td>{{ article.produit.prix }} &#128 </td>
+                            <td>{{ article.prix_totale_unique }} &#128 </td>
+                            <td>
+                                <a href="{{ path('panier_supprimer', {'idProduit': article.produit.id}) }}" type="button" class="btn btn-danger">
+                                    <img src="{{ asset('images/delete.png') }}"/>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    <thead class="thead-dark">
+                        <th>Total : </th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>{{ total }} &#128</th>
+                        <th></th>
+                    </thead>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
