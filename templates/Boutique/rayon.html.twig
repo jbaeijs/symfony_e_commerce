@@ -9,7 +9,14 @@
                 {% for produit in produits %}
                     <div class="col-sm">
                         <img src="{{ asset(produit.visuel) }}"/>
-                        <h1>{{ produit.libelle }}<h1>
+                        <h1>{{ produit.libelle }}</h1>
+                        <p class="rayonDescription"><i>{{ produit.texte }}</i></p>
+                        <button>
+                        <a href="{{ path('panier_ajouter', {'idProduit': produit.id, 'quantite': 1 }) }}">
+                            <img src="{{ asset("images/shopping-cart.png") }}"/>
+                            {{ produit.prix }} &#128
+                        </a>
+                        </button>
                     </div>
                 {% endfor %}
             </div>

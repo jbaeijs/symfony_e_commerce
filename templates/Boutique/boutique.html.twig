@@ -8,10 +8,12 @@
             <div class="row">
                 {% for categorie in categories %}
                     <div class="col-sm">
-                        <a href="{{ path('rayon', {'idCategorie': categorie.id}) }}"><h1>
-                            <img src="{{ asset(categorie.visuel) }}"/>
-                            <p>{{ categorie.libelle }}</p>
-                        <h1></a>
+                        <a href="{{ path('rayon', {'idCategorie': categorie.id}) }}">
+                            <h1>
+                                <img src="{{ asset(categorie.visuel) }}"/>
+                                <p>{{ categorie.libelle }}</p>
+                            <h1>
+                        </a>
                     </div>
                 {% endfor %}
             </div>

@@ -21,9 +21,6 @@ class PanierService {
 
         // Récupération du panier en session s'il existe, init. à vide sinon
         $this->panier = $this->session->get(self::PANIER_SESSION, []);
-        $this->ajouterProduit(4, 8);
-        $this->ajouterProduit(1, 2);
-        $this->ajouterProduit(3, 4);
     }
 
     // getContenu renvoie le contenu du panier
@@ -49,7 +46,6 @@ class PanierService {
             $currentProduct = $this->boutique->findProduitById($article["idProduit"]);
             $sommeTotale += ($currentProduct["prix"] * $article["quantite"]);
         }
-        
         return $sommeTotale;
     }
 
@@ -64,32 +60,49 @@ class PanierService {
 
     // ajouterProduit ajoute au panier le produit $idProduit en quantite $quantite
     public function ajouterProduit(int $idProduit, int $quantite = 1) {
-       $temp_array = [
-            "idProduit" => $idProduit,
-            "quantite" => $quantite
-       ];
-        array_push($this->panier, $temp_array);
-    //    updateSession();
+        $newProduct = TRUE;
+        for ($i=0; $i < sizeof($this->panier); $i++) {
+            if ($this->panier[$i]["idProduit"] == $idProduit){
+                $this->panier[$i]["quantite"] += $quantite;
+                $newProduct = FALSE;
+            }
+        }
+        if ($newProduct){
+            $temp_array = [
+                    "idProduit" => $idProduit,
+                    "quantite" => $quantite
+            ];
+            array_push($this->panier, $temp_array);
+        }
+        $this->updateSession();
     }
    
     // enleverProduit enlève du panier le produit $idProduit en quantite $quantite
     public function enleverProduit(int $idProduit, int $quantite = 1) {
-        //updateSession();
+        for ($i=0; $i < sizeof($this->panier); $i++) {
+            if ($this->panier[$i]["idProduit"] == $idProduit)
+                if ($this->panier[$i]["quantite"] == 0){
+                    $this->supprimerProduit($idProduit);
+                } else {
+                    $this->panier[$i]["quantite"] -= $quantite;
+                }
+            }
+        $this->updateSession();
     }
   
     // supprimerProduit supprime complètement le produit $idProduit du panier
     public function supprimerProduit(int $idProduit) {
-        foreach ($this->panier as $article) {
-            if ($article["idProduit"] == $idProduit)
-                unset($article);
+        for ($i=0; $i < sizeof($this->panier); $i++) {
+            if ($this->panier[$i]["idProduit"] == $idProduit)
+                unset($this->panier[$i]);
         }
-        //updateSession();
+        $this->updateSession();
     }
    
     // vider vide complètement le panier
     public function vider() {
-        $this->session->remove(self::PANIER_SESSION);
-        //updateSession();
+        $this->panier = [];
+        $this->updateSession();
     }
 
     public function updateSession(){

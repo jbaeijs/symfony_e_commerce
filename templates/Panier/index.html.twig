@@ -10,6 +10,10 @@
                 {% if panier|length == 0 %}
                     <h2>Votre panier est vide...</h2>
                 {% else %}
+                    <a href="{{ path('panier_vider') }}" type="button" class="btn btn-danger">
+                        <img src="{{ asset('images/delete.png') }}"/>
+                        Vider le panier
+                    </a>
                     <table class="table">
                     <thead class="thead-dark">
                         <tr>
@@ -26,9 +30,9 @@
                             <th><img width="75px" src="{{ asset(article.produit.visuel) }}"/></th>
                             <td>{{ article.produit.libelle }}</td>
                             <td>
-                                <a href="{{ path('panier_enlever', {'idProduit': article.produit.id, 'quantite': article.quantite - 1}) }}" type="button" class="btn btn-light" style="margin-right: 10px;">-</a>
+                                <a href="{{ path('panier_enlever', {'idProduit': article.produit.id, 'quantite': 1}) }}" type="button" class="btn btn-light" style="margin-right: 10px;">-</a>
                                 {{ article.quantite }}
-                                <a href="{{ path('panier_ajouter', {'idProduit': article.produit.id, 'quantite': article.quantite + 1}) }}" type="button" class="btn btn-light" style="margin-left: 10px;">+</a>
+                                <a href="{{ path('panier_ajouter', {'idProduit': article.produit.id, 'quantite': 1}) }}" type="button" class="btn btn-light" style="margin-left: 10px;">+</a>
                             </td>
                             <td>{{ article.produit.prix }} &#128 </td>
                             <td>{{ article.prix_totale_unique }} &#128 </td>
